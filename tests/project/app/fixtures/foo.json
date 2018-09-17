@@ -1,0 +1,1 @@
+[{"model": "app.foo", "pk": 1, "fields": {"name": "parent1"}}, {"model": "app.foo", "pk": 2, "fields": {"name": "parent2"}}]
