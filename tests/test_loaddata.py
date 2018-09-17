@@ -1,4 +1,4 @@
-import io
+import six
 import json
 import os
 from django.test import TestCase
@@ -12,7 +12,7 @@ PATH = 'tests/project/app/fixtures/'
 class TestLoaddataMethods(TestCase):
 
     def setUp(self):
-        out = io.StringIO()
+        out = six.StringIO()
         with self.settings(ENVIRONMENT='dev'):
             call_command("migrate", "app", "0003", stdout=out)
             Ham.objects.all().delete()
@@ -23,7 +23,7 @@ class TestLoaddataMethods(TestCase):
                 set([x['pk'] for x in data]))
 
     def test_loaddata(self):
-        out = io.StringIO()
+        out = six.StringIO()
         with self.settings(ENVIRONMENT='dev'):
             call_command("migrate", "app", "0004", stdout=out)
 
@@ -39,5 +39,5 @@ class TestLoaddataMethods(TestCase):
                 self.__check_data(data, instances)
 
     def tearDown(self):
-        out = io.StringIO()
+        out = six.StringIO()
         call_command("migrate", "app", "zero", stdout=out)

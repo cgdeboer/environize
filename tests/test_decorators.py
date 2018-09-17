@@ -1,4 +1,4 @@
-import io
+import six
 from django.test import TestCase, modify_settings
 from django.core.management import call_command
 from tests.project.app.models import Ham
@@ -7,7 +7,7 @@ from tests.project.app.models import Ham
 class TestEnvFilterMethods(TestCase):
 
     def setUp(self):
-        out = io.StringIO()
+        out = six.StringIO()
         call_command("migrate", "app", "zero", stdout=out)
 
     def checkobject(self, env):
@@ -16,7 +16,7 @@ class TestEnvFilterMethods(TestCase):
 
     @modify_settings(ALLOWED_HOSTS={'remove': 'testserver'})
     def test_only_in(self):
-        out = io.StringIO()
+        out = six.StringIO()
         call_command("migrate", "app", "0001", stdout=out)
         for env in ["production", "dev", "qa"]:
             with self.settings(ENVIRONMENT=env):
@@ -25,7 +25,7 @@ class TestEnvFilterMethods(TestCase):
                 call_command("migrate", "app", "0001", stdout=out)
 
     def test_only_test(self):
-        out = io.StringIO()
+        out = six.StringIO()
         call_command("migrate", "app", "0001", stdout=out)
         with self.settings(ENVIRONMENT="test"):
             call_command("migrate", "app", "0002", stdout=out)
@@ -34,7 +34,7 @@ class TestEnvFilterMethods(TestCase):
 
     @modify_settings(ALLOWED_HOSTS={'remove': 'testserver'})
     def test_except_in(self):
-        out = io.StringIO()
+        out = six.StringIO()
         call_command("migrate", "app", "0002", stdout=out)
         Ham.objects.all().delete()
         for env in ["production", "dev", "qa"]:
@@ -44,7 +44,7 @@ class TestEnvFilterMethods(TestCase):
                 call_command("migrate", "app", "0002", stdout=out)
 
     def test_except_test(self):
-        out = io.StringIO()
+        out = six.StringIO()
         call_command("migrate", "app", "0002", stdout=out)
         Ham.objects.all().delete()
         with self.settings(ENVIRONMENT="test"):
@@ -53,5 +53,5 @@ class TestEnvFilterMethods(TestCase):
             call_command("migrate", "app", "0002", stdout=out)
 
     def tearDown(self):
-        out = io.StringIO()
+        out = six.StringIO()
         call_command("migrate", "app", "zero", stdout=out)
