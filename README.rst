@@ -4,7 +4,7 @@ Environize
 .. image:: https://travis-ci.org/cgdeboer/environize.svg?branch=master
     :target: https://travis-ci.org/cgdeboer/environize
 
-.. image:: https://img.shields.io/pypi/v/iteround.svg
+.. image:: https://img.shields.io/pypi/v/environize.svg
     :target: https://pypi.org/project/environize/
 
 .. image:: https://raw.githubusercontent.com/cgdeboer/environize/master/docs/environize.png

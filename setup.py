@@ -8,11 +8,10 @@ setuptools.setup(
     version="0.0.1",
     author="Calvin DeBoer",
     author_email="cgdeboer@gmail.com",
-    description=("Rounds iterables (arrays, lists, sets, etc) "
-                 "while maintaining the sum of the initial array."),
+    description="enables environment and state savvy DataMigration tools for Django",
     long_description=long_description,
-    long_description_content_type="text/markdown",
-    url="https://github.com/cgdeboer/iteround",
+    long_description_content_type="text/x-rst",
+    url="https://github.com/cgdeboer/environize",
     packages=setuptools.find_packages(),
     classifiers=(
         "Programming Language :: Python :: 3",
