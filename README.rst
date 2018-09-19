@@ -86,6 +86,8 @@ Decorators - Usage
 Commands - Usage
 ------------------
 
+*You are responsible for ensuring fixtures are loaded in the correct order with respect to data relationships.*
+
 .. code-block:: python
 
     import os
@@ -117,6 +119,8 @@ Feature Support
 Environize officially supports:
     - Python 2.7 on Django 1.11 LTS
     - Python 3.5+ on Django 2+
+    - *Postgresql and Sqllite only*
+    - *JSON Fixtures only*
 
 
 Installation
